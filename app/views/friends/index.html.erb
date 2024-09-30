@@ -1,0 +1,43 @@
+<p class="text-success"><%= notice %></p>
+
+<% content_for :title, "Friends" %>
+
+<h1 class="text-center my-4">Friends List</h1>
+
+<div id="friends" class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Twitter</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    
+    <tbody>
+      <% @friends.each do |friend| %>
+        <% if friend.user == current_user %>
+        <tr>
+          <td><%= friend.first_name %></td>
+          <td><%= friend.last_name %></td>
+          <td><%= friend.email %></td>
+          <td><%= friend.phone %></td>
+          <td><%= friend.twitter %></td>
+          <td>
+            <%= link_to "Show", friend, class: 'btn btn-secondary btn-sm' %>
+          </td>
+        </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+    
+  </table>
+</div>
+
+<div class="text-center my-4">
+  <%= link_to "New friend", new_friend_path, class: 'btn btn-success' %>
+</div>
